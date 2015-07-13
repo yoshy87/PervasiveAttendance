@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World</string>
+    <string name="app_name">PervasiveLogin</string>
+    <string name="Name">Name</string>
+    <string name="Surname">Surname</string>
+    <string name="Username">Username</string>
+    <string name="Email">Email</string>
+    <string name="Password">Password</string>
+    <string name="Imei">Imei</string>
+    <string name="LoginBtn">Login</string>
+    <string name="SignupBtn">Sign Up</string>
+    <string name="LogoutBtn">Log Out</string>
+    <string name="SignatureBtn">Signature</string>
+    <string name="Welcome">Welcome!</string>
+    <string name="Rating">Rating</string>
+    <string name="Advice">Advice</string>
+    <string name="write_to_tag">Write to Tag</string>
+    <string name="Matricola">Matricola</string>
+    <string name="default_note_text">Edit me!</string>
+
+
+</resources>
