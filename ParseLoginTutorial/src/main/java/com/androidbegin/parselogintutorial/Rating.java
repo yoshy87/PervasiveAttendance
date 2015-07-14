@@ -32,7 +32,8 @@ public class Rating extends Activity {
     EditText advice2;
     EditText advice3;
     Button button;
-    
+
+
     ParseObject rating = new ParseObject("Rating");
     
     @Override  
