@@ -32,7 +32,7 @@ import com.parse.ParseUser;
 
 import java.io.IOException;
 
-public class Signature extends Activity {
+public class SignatureProf extends Activity {
     private static final String TAG = null;
     private boolean mResumed = false;
     private boolean mWriteMode = false;
@@ -55,13 +55,13 @@ public class Signature extends Activity {
         setContentView(R.layout.signature);
         findViewById(R.id.write_tag).setOnClickListener(mTagWriter);
         mNote = ((TextView) findViewById(R.id.matricola));
-        mNote.setText(matricola);
+        //mNote.setText(matricola);
         mNote.addTextChangedListener(mTextWatcher);
 
 
         mNote2 = (TextView)findViewById(R.id.imei);
         TelephonyManager telephonyManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
-        mNote2.setText(getDeviceID(telephonyManager));
+       // mNote2.setText(getDeviceID(telephonyManager));
         mNote2.addTextChangedListener(mTextWatcher);
 
         // Handle all of our received NFC intents in this activity.
@@ -138,7 +138,7 @@ public class Signature extends Activity {
         @Override
         public void afterTextChanged(Editable arg0) {
             if (mResumed) {
-                mNfcAdapter.enableForegroundNdefPush(Signature.this, getNoteAsNdef());
+                mNfcAdapter.enableForegroundNdefPush(SignatureProf.this, getNoteAsNdef());
             }
         }
     };
@@ -150,7 +150,7 @@ public class Signature extends Activity {
             disableNdefExchangeMode();
             enableTagWriteMode();
 
-            new AlertDialog.Builder(Signature.this).setTitle("Touch tag to write")
+            new AlertDialog.Builder(SignatureProf.this).setTitle("Touch tag to write")
                     .setOnCancelListener(new DialogInterface.OnCancelListener() {
                         @Override
                         public void onCancel(DialogInterface dialog) {
@@ -163,21 +163,21 @@ public class Signature extends Activity {
 
     private void promptForContent(final NdefMessage msg) {
         new AlertDialog.Builder(this).setTitle("Replace current content?")
-            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface arg0, int arg1) {
-                    String body = new String(msg.getRecords()[0].getPayload());
-                    String body1 = new String(msg.getRecords()[1].getPayload());
-                    setNoteBody(body);
-                    setNoteBody1(body1);
-                }
-            })
-            .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface arg0, int arg1) {
-                    
-                }
-            }).show();
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        String body = new String(msg.getRecords()[0].getPayload());
+                        String body1 = new String(msg.getRecords()[1].getPayload());
+                        setNoteBody(body);
+                        setNoteBody1(body1);
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+
+                    }
+                }).show();
     }
 
     private void setNoteBody(String body) {
@@ -198,7 +198,7 @@ public class Signature extends Activity {
         NdefRecord textRecord = new NdefRecord(NdefRecord.TNF_MIME_MEDIA, "text/plain".getBytes(), new byte[] {}, textBytes);
         NdefRecord textRecord1 = new NdefRecord(NdefRecord.TNF_MIME_MEDIA, "text/plain".getBytes(), new byte[] {}, textBytes1);
         return new NdefMessage(new NdefRecord[] {
-            textRecord, textRecord1
+                textRecord, textRecord1
         });
     }
 
@@ -219,10 +219,10 @@ public class Signature extends Activity {
                 byte[] empty = new byte[] {};
                 NdefRecord record = new NdefRecord(NdefRecord.TNF_UNKNOWN, empty, empty, empty);
                 NdefMessage msg = new NdefMessage(new NdefRecord[] {
-                    record
+                        record
                 });
                 msgs = new NdefMessage[] {
-                    msg
+                        msg
                 };
             }
         } else {
@@ -232,12 +232,12 @@ public class Signature extends Activity {
         return msgs;
     }
 
-	protected void enableNdefExchangeMode() {
-        mNfcAdapter.enableForegroundNdefPush(Signature.this, getNoteAsNdef());
+    protected void enableNdefExchangeMode() {
+        mNfcAdapter.enableForegroundNdefPush(SignatureProf.this, getNoteAsNdef());
         mNfcAdapter.enableForegroundDispatch(this, mNfcPendingIntent, mNdefExchangeFilters, null);
     }
 
-	private void disableNdefExchangeMode() {
+    private void disableNdefExchangeMode() {
         mNfcAdapter.disableForegroundNdefPush(this);
         mNfcAdapter.disableForegroundDispatch(this);
     }
@@ -246,7 +246,7 @@ public class Signature extends Activity {
         mWriteMode = true;
         IntentFilter tagDetected = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
         mWriteTagFilters = new IntentFilter[] {
-            tagDetected
+                tagDetected
         };
         mNfcAdapter.enableForegroundDispatch(this, mNfcPendingIntent, mWriteTagFilters, null);
     }

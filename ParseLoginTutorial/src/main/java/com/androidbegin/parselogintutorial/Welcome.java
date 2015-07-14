@@ -41,7 +41,7 @@ public class Welcome extends Activity {
 
                 public void onClick(View arg0) {
                     Intent intent = new Intent(Welcome.this,
-                            Signature.class);
+                            SignatureProf.class);
                     startActivity(intent);
                     finish();
                 }
