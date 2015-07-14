@@ -57,8 +57,9 @@ public final class R {
         public static final int loginsignup=0x7f030000;
         public static final int rating=0x7f030001;
         public static final int signature=0x7f030002;
-        public static final int signupactivity=0x7f030003;
-        public static final int welcome=0x7f030004;
+        public static final int signatureprof=0x7f030003;
+        public static final int signupactivity=0x7f030004;
+        public static final int welcome=0x7f030005;
     }
     public static final class string {
         public static final int Advice=0x7f040000;

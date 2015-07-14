@@ -52,9 +52,9 @@ public class SignatureProf extends Activity {
         super.onCreate(savedInstanceState);
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
 
-        setContentView(R.layout.signature);
+        setContentView(R.layout.signatureprof);
         findViewById(R.id.write_tag).setOnClickListener(mTagWriter);
-        mNote = ((TextView) findViewById(R.id.matricola));
+        mNote = ((TextView) findViewById(R.id.username));
         //mNote.setText(matricola);
         mNote.addTextChangedListener(mTextWatcher);
 
@@ -99,6 +99,7 @@ public class SignatureProf extends Activity {
             setNoteBody(new String(payload));
             setIntent(new Intent()); // Consume this intent.
         }
+        enableNdefExchangeMode();
     }
 
     @Override
