@@ -48,7 +48,7 @@ public class SignupActivity extends Activity {
 	
 	
 	  static String IV = "AAAAAAAAAAAAAAAA";
-	   String plaintext; /*Note null padding*/
+	  String plaintext; /*Note null padding*/
 	  static String encryptionKey = "0123456789abcdef";
 	
 	

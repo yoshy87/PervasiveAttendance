@@ -57,13 +57,13 @@ public class Signature extends Activity {
         setContentView(R.layout.signature);
         findViewById(R.id.write_tag).setOnClickListener(mTagWriter);
         mNote = ((TextView) findViewById(R.id.matricola));
-        mNote.setText(matricola);
+        //mNote.setText(matricola);
         mNote.addTextChangedListener(mTextWatcher);
 
 
         mNote2 = (TextView)findViewById(R.id.imei);
         TelephonyManager telephonyManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
-        mNote2.setText(getDeviceID(telephonyManager));
+        //mNote2.setText(getDeviceID(telephonyManager));
         mNote2.addTextChangedListener(mTextWatcher);
 
         // Handle all of our received NFC intents in this activity.
