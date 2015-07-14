@@ -17,6 +17,7 @@ import android.nfc.tech.NdefFormatable;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.Editable;
+import android.widget.Button;
 import android.widget.TextView;
 import android.content.Context;
 import android.telephony.TelephonyManager;
@@ -40,6 +41,7 @@ public class SignatureProf extends Activity {
     ParseUser user = ParseUser.getCurrentUser();
     TextView mNote;
     TextView mNote2;
+    Button button2;
     String matricola = user.get("username").toString();
 
     PendingIntent mNfcPendingIntent;
@@ -57,6 +59,18 @@ public class SignatureProf extends Activity {
         mNote = ((TextView) findViewById(R.id.username));
         //mNote.setText(matricola);
         mNote.addTextChangedListener(mTextWatcher);
+
+        button2 = (Button) findViewById(R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                Intent intent = new Intent(SignatureProf.this,
+                        Welcome.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
 
         mNote2 = (TextView)findViewById(R.id.imei);

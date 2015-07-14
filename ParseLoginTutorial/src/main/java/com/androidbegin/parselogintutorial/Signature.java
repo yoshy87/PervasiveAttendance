@@ -3,6 +3,7 @@ package com.androidbegin.parselogintutorial;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -10,25 +11,22 @@ import android.content.IntentFilter.MalformedMimeTypeException;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
-import android.nfc.NfcManager;
 import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.nfc.tech.NdefFormatable;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.text.Editable;
-import android.widget.TextView;
-import android.content.Context;
 import android.telephony.TelephonyManager;
+import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
-
-import com.parse.LogInCallback;
-import com.parse.ParseException;
 import com.parse.ParseUser;
+import android.view.View.OnClickListener;
+
 
 import java.io.IOException;
 
@@ -41,6 +39,7 @@ public class Signature extends Activity {
     TextView mNote;
     TextView mNote2;
     String matricola = user.get("username").toString();
+    Button button2;
 
     PendingIntent mNfcPendingIntent;
     IntentFilter[] mWriteTagFilters;
@@ -58,6 +57,17 @@ public class Signature extends Activity {
         mNote.setText(matricola);
         mNote.addTextChangedListener(mTextWatcher);
 
+        button2 = (Button) findViewById(R.id.button2);
+        button2.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                Intent intent = new Intent(Signature.this,
+                        Welcome.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         mNote2 = (TextView)findViewById(R.id.imei);
         TelephonyManager telephonyManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);

@@ -32,6 +32,7 @@ public class Rating extends Activity {
     EditText advice2;
     EditText advice3;
     Button button;
+    Button button2;
 
     ParseObject rating = new ParseObject("Rating");
     
@@ -70,16 +71,16 @@ public class Rating extends Activity {
                 double voto2 = ratingbar2.getRating();
                 double voto3 = ratingbar3.getRating();
 
-                rating.put("rate", voto);
-                rating.put("advice", advicetxt);
+                rating.put("Listening", voto);
+                rating.put("ListeningLesson", advicetxt);
                 rating.saveInBackground();
 
-                rating.put("Listening", voto2);
-                rating.put("Professor", advicetxt2);
+                rating.put("Interest", voto2);
+                rating.put("InterestLesson", advicetxt2);
                 rating.saveInBackground();
 
-                rating.put("Interest", voto3);
-                rating.put("Course", advicetxt3);
+                rating.put("Understanding", voto3);
+                rating.put("UnderstandingLesson", advicetxt3);
                 rating.saveInBackground();
 
                 Toast.makeText(getApplicationContext(), "Thank you for rating", Toast.LENGTH_LONG).show();
@@ -88,7 +89,20 @@ public class Rating extends Activity {
                 startActivity(intent);
             }
               
-        });  
+        });
+
+        button2 = (Button) findViewById(R.id.button2);
+
+        button2.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                Intent intent = new Intent(Rating.this,
+                        Welcome.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }  
 	
 	
