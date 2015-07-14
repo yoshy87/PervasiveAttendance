@@ -74,7 +74,21 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt_password"
         android:inputType="textPassword" />
-    
+
+    <TextView
+        android:id="@+id/txt_matricola"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_username"
+        android:text="@string/Matricola" />
+
+    <EditText
+        android:id="@+id/edit_matricola"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_password"
+        android:inputType="text" />
+
     <TextView
         android:id="@+id/txt_imei"
         android:layout_width="match_parent"

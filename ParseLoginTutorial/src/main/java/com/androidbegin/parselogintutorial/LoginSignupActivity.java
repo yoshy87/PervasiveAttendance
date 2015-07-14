@@ -82,16 +82,5 @@ public class LoginSignupActivity extends Activity {
 				finish();
 			}
 		});
-
-		/*signaturebutton.setOnClickListener(new OnClickListener() {
-
-			public void onClick(View arg0) {
-				Intent intent = new Intent(LoginSignupActivity.this,
-						Signature.class);
-				startActivity(intent);
-				finish();
-			}
-		});*/
-
 	}
 }

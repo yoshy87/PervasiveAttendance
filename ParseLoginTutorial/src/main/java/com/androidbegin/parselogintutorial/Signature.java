@@ -42,8 +42,6 @@ public class Signature extends Activity {
     TextView mNote2;
     String matricola = user.get("name").toString();
 
-
-
     PendingIntent mNfcPendingIntent;
     IntentFilter[] mWriteTagFilters;
     IntentFilter[] mNdefExchangeFilters;

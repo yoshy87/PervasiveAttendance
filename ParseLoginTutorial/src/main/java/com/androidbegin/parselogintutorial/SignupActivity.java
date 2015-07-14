@@ -36,12 +36,14 @@ public class SignupActivity extends Activity {
 	String emailtxt;
 	String imeitxt;
 	String imeitext;
+    String matricula;
 
 	EditText name;
 	EditText surname;
 	EditText email;
 	EditText password;
 	EditText username;
+    EditText matricola;
 	
 	TextView imei;
 	
@@ -90,6 +92,7 @@ public class SignupActivity extends Activity {
         username = (EditText) findViewById(R.id.edit_username);
 		password = (EditText) findViewById(R.id.edit_password);
 		imei = (TextView) findViewById(R.id.edit_imei);
+        matricola = (EditText) findViewById(R.id.edit_matricola);
 		TelephonyManager telephonyManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
 		imei.setText(getDeviceID(telephonyManager));
 		
@@ -104,6 +107,7 @@ public class SignupActivity extends Activity {
 				usernametxt = username.getText().toString();
 				passwordtxt = password.getText().toString();
 				imeitxt = imei.getText().toString();
+                matricula = matricola.getText().toString();
 				
 				// Force user to fill up the form
 				if (nametxt.equals("") && surnametxt.equals("") && emailtxt.equals("") && usernametxt.equals("") && passwordtxt.equals("")) {
@@ -120,6 +124,7 @@ public class SignupActivity extends Activity {
 					user.setEmail(emailtxt);
 					user.setUsername(usernametxt);
 					user.setPassword(passwordtxt);
+                    user.put("Matricula", matricula);
 					
 					//Get Encripted IMEI
 					//plaintext = imeitxt;
