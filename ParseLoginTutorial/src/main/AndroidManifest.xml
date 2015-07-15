@@ -40,6 +40,8 @@
         </activity>
         <activity android:name=".Welcome" >
         </activity>
+        <activity android:name=".Course" >
+        </activity>
         <activity android:name=".Rating" >
         </activity>
         
