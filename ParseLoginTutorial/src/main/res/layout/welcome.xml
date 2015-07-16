@@ -20,30 +20,37 @@
         android:layout_below="@+id/txtwelcome"
         android:layout_centerHorizontal="true" />
 
-     <Button
-         android:id="@+id/signature"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_below="@+id/button1"
-         android:layout_centerHorizontal="true"
-         android:text="@string/SignatureBtn" />
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Rating"
+        android:layout_below="@+id/txtuser"
+        android:layout_centerHorizontal="true" />
 
-     <Button
-         android:id="@+id/logout"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_alignParentBottom="true"
-         android:layout_centerHorizontal="true"
-         android:layout_marginBottom="36dp"
-         android:text="@string/LogoutBtn" />
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/LogoutBtn"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
-     <Button
-         android:id="@+id/button1"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_alignTop="@+id/txtuser"
-         android:layout_centerHorizontal="true"
-         android:layout_marginTop="28dp"
-         android:text="@string/Rating" />
+    <Button
+        android:id="@+id/signature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/SignatureBtn"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Check"
+        android:layout_below="@+id/signature"
+        android:layout_alignRight="@+id/button1"
+        android:layout_alignEnd="@+id/button1" />
 
 </RelativeLayout>

@@ -10,7 +10,6 @@ import android.content.IntentFilter.MalformedMimeTypeException;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
-import android.nfc.NfcManager;
 import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.nfc.tech.NdefFormatable;
@@ -24,17 +23,17 @@ import android.telephony.TelephonyManager;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
 import android.widget.Toast;
-import com.parse.LogInCallback;
+
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+import com.parse.ParseQuery;
+import com.parse.GetCallback;
 
 import java.io.IOException;
 
-public class SignatureProf extends Activity {
+public class PostSignatureProf extends Activity {
     private static final String TAG = null;
     private boolean mResumed = false;
     private boolean mWriteMode = false;
@@ -44,27 +43,40 @@ public class SignatureProf extends Activity {
     TextView mNote2;
     Button button2;
     String matricola = user.get("username").toString();
+
     String course = user.get("corso").toString();
 
-
-    //Object to store Sign_in table 
-    ParseObject signin = new ParseObject("Sign_in");
+    //Object to store on Sign_out table
+    ParseObject signout = new ParseObject("Sign_out");
 
     PendingIntent mNfcPendingIntent;
     IntentFilter[] mWriteTagFilters;
     IntentFilter[] mNdefExchangeFilters;
 
-        /** Called when the activity is first created. */
+    /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
 
-        setContentView(R.layout.signatureprof);
+        setContentView(R.layout.postsignatureprof);
 
         mNote = ((TextView) findViewById(R.id.username));
-        //toast(matricola);
+        // toast(matricola);
         mNote.addTextChangedListener(mTextWatcher);
+
+        button2 = (Button) findViewById(R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                Intent intent = new Intent(PostSignatureProf.this,
+                        WelcomeProf.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
         mNote2 = (TextView)findViewById(R.id.imei);
         TelephonyManager telephonyManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
@@ -85,18 +97,6 @@ public class SignatureProf extends Activity {
         // Intent filters for writing to a tag
         IntentFilter tagDetected = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
         mWriteTagFilters = new IntentFilter[] { tagDetected };
-
-        button2 = (Button) findViewById(R.id.button2);
-        button2.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-                Intent intent = new Intent(SignatureProf.this,
-                        WelcomeProf.class);
-                startActivity(intent);
-                finish();
-            }
-        });
     }
 
     String getDeviceID(TelephonyManager phonyManager){
@@ -158,7 +158,7 @@ public class SignatureProf extends Activity {
         @Override
         public void afterTextChanged(Editable arg0) {
             if (mResumed) {
-                mNfcAdapter.enableForegroundNdefPush(SignatureProf.this, getNoteAsNdef());
+                mNfcAdapter.enableForegroundNdefPush(PostSignatureProf.this, getNoteAsNdef());
             }
         }
     };
@@ -170,7 +170,7 @@ public class SignatureProf extends Activity {
             disableNdefExchangeMode();
             enableTagWriteMode();
 
-            new AlertDialog.Builder(SignatureProf.this).setTitle("Touch tag to write")
+            new AlertDialog.Builder(PostSignatureProf.this).setTitle("Touch tag to write")
                     .setOnCancelListener(new DialogInterface.OnCancelListener() {
                         @Override
                         public void onCancel(DialogInterface dialog) {
@@ -193,11 +193,30 @@ public class SignatureProf extends Activity {
                         toast(body);
                         toast(body1);
 
+
+                        ParseQuery<ParseObject> query = ParseQuery.getQuery("User");
+
+                        // Retrieve the object by id
+                        query.getInBackground(body, new GetCallback<ParseObject>() {
+                            public void done(ParseObject user, ParseException e) {
+                                if (e == null) {
+                                    // Now let's update it with some new data. In this case, only cheatMode and score
+                                    // will get sent to the Parse Cloud. playerName hasn't changed.
+                                    String course = user.get("corso").toString();
+                                    String follow = user.get(course).toString();
+                                    int ore = Integer.parseInt(follow);
+                                    user.put(course, ore++);
+                                    user.saveInBackground();
+                                }
+                            }
+                        });
+
                         //Write on table Sign_in on Parse DB 
-                        signin.put("Matricola", body);
-                        signin.put("IMEI", body1);
-                        signin.put("Course", course);
-                        signin.saveInBackground();
+                        signout.put("Matricola", body);
+                        signout.put("IMEI", body1);
+                        signout.put("Course" , course);
+                        signout.put("Lecture", 1);
+                        signout.saveInBackground();
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -261,7 +280,7 @@ public class SignatureProf extends Activity {
     }
 
     protected void enableNdefExchangeMode() {
-        mNfcAdapter.enableForegroundNdefPush(SignatureProf.this, getNoteAsNdef());
+        mNfcAdapter.enableForegroundNdefPush(PostSignatureProf.this, getNoteAsNdef());
         mNfcAdapter.enableForegroundDispatch(this, mNfcPendingIntent, mNdefExchangeFilters, null);
     }
 

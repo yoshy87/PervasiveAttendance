@@ -33,7 +33,7 @@ public class Course extends Activity{
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this,
                 android.R.layout.simple_spinner_item,
-                new String[]{"Pervasive Sysyem: 1234", "Algorithm Design: 2345","Data Management: 3456","Capacity Planning: 4567"}
+                new String[]{"Pervasive_System", "Algorithm_Design","Data_Management","Capacity_Planning"}
         );
         spinner.setAdapter(adapter);
 
@@ -64,7 +64,7 @@ public class Course extends Activity{
                 user.saveInBackground();
 
                 Intent intent = new Intent(Course.this,
-                        Welcome.class);
+                        ControlUser.class);
                 startActivity(intent);
                 finish();
             }

@@ -1,5 +1,9 @@
 package com.androidbegin.parselogintutorial;
 
+//import java.io.PrintWriter;
+//import java.io.StringWriter;
+//import java.io.Writer;
+
 import com.parse.ParseUser;
 
 import android.app.Activity;
@@ -9,6 +13,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+//import android.widget.Toast;
 
 public class Welcome extends Activity {
 
@@ -16,7 +21,7 @@ public class Welcome extends Activity {
     Button logout;
     Button rating;
     Button signature;
-
+    Button check;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,20 +37,7 @@ public class Welcome extends Activity {
         // Locate TextView in welcome.xml
         TextView txtuser = (TextView) findViewById(R.id.txtuser);
 
-        // Set the currentUser String into TextView
-        if (currentUser.getBoolean("Professor")) {
 
-            signature = (Button) findViewById(R.id.signature);
-
-            signature.setOnClickListener(new OnClickListener() {
-
-                public void onClick(View arg0) {
-                    Intent intent = new Intent(Welcome.this,
-                            SignatureProf.class);
-                    startActivity(intent);
-                    finish();
-                }
-            });
 
             logout = (Button) findViewById(R.id.logout);
 
@@ -61,15 +53,13 @@ public class Welcome extends Activity {
                 }
             });
 
-        } else {
-
             txtuser.setText("You are logged in as " + struser);
 
             rating = (Button) findViewById(R.id.button1);
 
-            rating.setOnClickListener(new OnClickListener() {
+            rating.setOnClickListener(new OnClickListener(){
 
-                public void onClick(View arg0) {
+                public void onClick(View arg0){
                     Intent intent = new Intent(Welcome.this,
                             Rating.class);
                     startActivity(intent);
@@ -103,6 +93,17 @@ public class Welcome extends Activity {
                     finish();
                 }
             });
+
+            check = (Button) findViewById(R.id.check);
+
+            check.setOnClickListener(new OnClickListener() {
+
+                public void onClick(View arg0) {
+                    Intent intent = new Intent(Welcome.this,
+                            CheckLessonPercentage.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
         }
-    }
-}
+   }

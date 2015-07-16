@@ -5,6 +5,7 @@ import android.content.Intent;
 //import android.content.Context;
 import android.os.Bundle;
 //import android.util.Log;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -40,7 +41,7 @@ public class Rating extends Activity {
     protected void onCreate(Bundle savedInstanceState) {  
         super.onCreate(savedInstanceState);  
         setContentView(R.layout.rating);  
-        addListenerOnButtonClick();  
+        addListenerOnButtonClick();
     }  
   
     public void addListenerOnButtonClick(){  
