@@ -2,7 +2,7 @@
 <resources>
 
     <string name="hello">Hello World</string>
-    <string name="app_name">PervasiveLogin</string>
+    <string name="app_name">Pervasive Attendance</string>
     <string name="Name">Name</string>
     <string name="Surname">Surname</string>
     <string name="Username">Username</string>

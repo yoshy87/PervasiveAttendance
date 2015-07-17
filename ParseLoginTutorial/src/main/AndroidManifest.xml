@@ -15,7 +15,7 @@
     <application
         android:allowBackup="true"
         android:name=".ParseApplication"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@mipmap/nfc_icon"
         android:label="@string/app_name" >
         <activity
             android:name=".MainActivity"
@@ -34,27 +34,41 @@
 
 
         </activity>
-        <activity android:name=".LoginSignupActivity" >
+        <activity android:name=".LoginSignupActivity"
+            android:icon="@mipmap/nfc_icon"
+            android:label="@string/app_name" >
         </activity>
-        <activity android:name=".SignupActivity" >
+        <activity android:name=".SignupActivity"
+            android:icon="@mipmap/nfc_icon"
+
+            android:label="@string/app_name">
         </activity>
-        <activity android:name=".Signature" >
+        <activity android:name=".Signature"
+            android:label="@string/app_name">
         </activity>
-        <activity android:name=".Course" >
+        <activity android:name=".Course"
+            android:label="@string/app_name">
         </activity>
-        <activity android:name=".SignatureProf" >
+        <activity android:name=".SignatureProf"
+            android:label="@string/app_name">
         </activity>
-        <activity android:name=".PostSignatureProf" >
+        <activity android:name=".PostSignatureProf"
+            android:label="@string/app_name">
         </activity>
-        <activity android:name=".ControlUser" >
+        <activity android:name=".ControlUser"
+            android:label="@string/app_name">
         </activity>
-        <activity android:name=".Welcome" >
+        <activity android:name=".Welcome"
+            android:label="@string/app_name">
         </activity>
-        <activity android:name=".WelcomeProf" >
+        <activity android:name=".WelcomeProf"
+            android:label="@string/app_name">
         </activity>
-        <activity android:name=".Rating" >
+        <activity android:name=".Rating"
+            android:label="@string/app_name">
         </activity>
-        <activity android:name=".CheckLessonPercentage" >
+        <activity android:name=".CheckLessonPercentage"
+            android:label="@string/app_name">
         </activity>
     </application>
 

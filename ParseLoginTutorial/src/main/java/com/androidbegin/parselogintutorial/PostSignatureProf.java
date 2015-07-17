@@ -49,6 +49,7 @@ public class PostSignatureProf extends Activity {
     //Object to store on Sign_out table
     ParseObject signout = new ParseObject("Sign_out");
 
+
     PendingIntent mNfcPendingIntent;
     IntentFilter[] mWriteTagFilters;
     IntentFilter[] mNdefExchangeFilters;
@@ -118,7 +119,7 @@ public class PostSignatureProf extends Activity {
             setNoteBody(new String(payload));
             setIntent(new Intent()); // Consume this intent.
         }
-//        enableNdefExchangeMode();
+        enableNdefExchangeMode();
     }
 
     @Override
@@ -193,29 +194,37 @@ public class PostSignatureProf extends Activity {
                         toast(body);
                         toast(body1);
 
+                        final ParseUser prof = ParseUser.getCurrentUser();
 
-                        ParseQuery<ParseObject> query = ParseQuery.getQuery("User");
+                        final String mat = body;
 
-                        // Retrieve the object by id
-                        query.getInBackground(body, new GetCallback<ParseObject>() {
-                            public void done(ParseObject user, ParseException e) {
-                                if (e == null) {
-                                    // Now let's update it with some new data. In this case, only cheatMode and score
-                                    // will get sent to the Parse Cloud. playerName hasn't changed.
-                                    String course = user.get("corso").toString();
-                                    String follow = user.get(course).toString();
-                                    int ore = Integer.parseInt(follow);
-                                    user.put(course, ore++);
-                                    user.saveInBackground();
+                        ParseQuery<ParseObject> query = ParseQuery.getQuery("Hours");
+                        query.whereEqualTo("Matricola", body);
+                        query.getFirstInBackground(new GetCallback<ParseObject>() {
+                            public void done(ParseObject query, ParseException e) {
+                                ParseObject hours = new ParseObject("Hours");
+
+                                if (query == null) {
+                                    String course = prof.get("corso").toString();
+                                    toast(course);
+                                    hours.put("Matricola", mat);
+                                    hours.put(course, 1);
+                                    hours.saveInBackground();
                                 }
-                            }
-                        });
-
+                                else{
+                                    String ore = query.get(course).toString();
+                                    int hour = Integer.parseInt(ore);
+                                    int ore_new = hour+1;
+                                    query.put(course, ore_new);
+                                    query.saveInBackground();
+                                }
+                                }
+                            });
                         //Write on table Sign_in on Parse DB 
                         signout.put("Matricola", body);
                         signout.put("IMEI", body1);
                         signout.put("Course" , course);
-                        signout.put("Lecture", 1);
+                        //signout.put("Lecture", 1);
                         signout.saveInBackground();
                     }
                 })

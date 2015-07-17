@@ -118,7 +118,7 @@ public class SignatureProf extends Activity {
             setNoteBody(new String(payload));
             setIntent(new Intent()); // Consume this intent.
         }
-//        enableNdefExchangeMode();
+        enableNdefExchangeMode();
     }
 
     @Override

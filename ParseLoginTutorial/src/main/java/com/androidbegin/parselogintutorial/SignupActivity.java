@@ -126,20 +126,8 @@ public class SignupActivity extends Activity {
                     //plaintext = imeitxt;
 
                     try{
-
-                        Toast.makeText(getApplicationContext(),
-                                "Sono entrato nel try.",
-                                Toast.LENGTH_LONG).show();
-
                         byte[] cipher = encrypt(imeitxt, encryptionKey);
                         imeitext = new String(cipher, "ISO-8859-1");
-						/*imeitext += "0";
-						
-						
-						imeitxt = imeitext;
-						
-						
-						*/
                         user.put("imei", imeitext);
 
                     }catch(Exception e){
@@ -167,7 +155,7 @@ public class SignupActivity extends Activity {
                                 // If user exist and authenticated, send user to Welcome.class
                                 Intent intent = new Intent(
                                         SignupActivity.this,
-                                        Welcome.class);
+                                        Course.class);
                                 startActivity(intent);
                             } else {
                                 Toast.makeText(getApplicationContext(),
