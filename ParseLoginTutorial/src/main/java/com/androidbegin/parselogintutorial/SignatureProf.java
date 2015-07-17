@@ -27,9 +27,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.parse.GetCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.io.IOException;
@@ -45,11 +48,11 @@ public class SignatureProf extends Activity {
     Button button2;
     String matricola = user.get("username").toString();
     String course = user.get("corso").toString();
-
-
-    //Object to store Sign_in table 
     ParseObject signin = new ParseObject("Sign_in");
 
+
+
+    //Object to store Sign_in table
     PendingIntent mNfcPendingIntent;
     IntentFilter[] mWriteTagFilters;
     IntentFilter[] mNdefExchangeFilters;
@@ -187,17 +190,45 @@ public class SignatureProf extends Activity {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
                         String body = new String(msg.getRecords()[0].getPayload());
-                        String body1 = new String(msg.getRecords()[1].getPayload());
+                        final String body1 = new String(msg.getRecords()[1].getPayload());
                         setNoteBody(body);
                         setNoteBody1(body1);
                         toast(body);
                         toast(body1);
 
-                        //Write on table Sign_in on Parse DB 
-                        signin.put("Matricola", body);
-                        signin.put("IMEI", body1);
-                        signin.put("Course", course);
-                        signin.saveInBackground();
+
+                        final ParseUser prof = ParseUser.getCurrentUser();
+
+                        final String mat = body;
+                        final String IMEI = body1;
+
+                        ParseQuery<ParseObject> query = ParseQuery.getQuery("Sign_in");
+                        query.whereEqualTo("Matricola", body);
+                        query.getFirstInBackground(new GetCallback<ParseObject>() {
+                            public void done(ParseObject query, ParseException e) {
+                                ParseObject hours = new ParseObject("Sign_in");
+
+                                if (query == null) {
+                                    String course = prof.get("corso").toString();
+                                    toast(course);
+                                    hours.put("Matricola", mat);
+                                    hours.put("IMEI", IMEI);
+                                    hours.put(course, 1);
+                                    hours.saveInBackground();
+                                }
+                                else {
+                                    if(query.get("IMEI").toString().equals(body1)){
+                                        String ore = query.get(course).toString();
+                                        int hour = Integer.parseInt(ore);
+                                        int ore_new = hour + 1;
+                                        query.put(course, ore_new);
+                                        query.saveInBackground();
+                                    }else{
+                                        toast("IMEI UTENTE DIVERSO");
+                                    }
+                                }
+                            }
+                        });
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {

@@ -188,7 +188,7 @@ public class PostSignatureProf extends Activity {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
                         String body = new String(msg.getRecords()[0].getPayload());
-                        String body1 = new String(msg.getRecords()[1].getPayload());
+                        final String body1 = new String(msg.getRecords()[1].getPayload());
                         setNoteBody(body);
                         setNoteBody1(body1);
                         toast(body);
@@ -197,6 +197,7 @@ public class PostSignatureProf extends Activity {
                         final ParseUser prof = ParseUser.getCurrentUser();
 
                         final String mat = body;
+                        final String IMEI = body1;
 
                         ParseQuery<ParseObject> query = ParseQuery.getQuery("Hours");
                         query.whereEqualTo("Matricola", body);
@@ -208,15 +209,20 @@ public class PostSignatureProf extends Activity {
                                     String course = prof.get("corso").toString();
                                     toast(course);
                                     hours.put("Matricola", mat);
+                                    hours.put("IMEI", IMEI);
                                     hours.put(course, 1);
                                     hours.saveInBackground();
                                 }
-                                else{
-                                    String ore = query.get(course).toString();
-                                    int hour = Integer.parseInt(ore);
-                                    int ore_new = hour+1;
-                                    query.put(course, ore_new);
-                                    query.saveInBackground();
+                                else {
+                                    if(query.get("IMEI").toString().equals(body1)){
+                                        String ore = query.get(course).toString();
+                                        int hour = Integer.parseInt(ore);
+                                        int ore_new = hour + 1;
+                                        query.put(course, ore_new);
+                                        query.saveInBackground();
+                                    }else{
+                                        toast("IMEI UTENTE DIVERSO");
+                                    }
                                 }
                                 }
                             });
