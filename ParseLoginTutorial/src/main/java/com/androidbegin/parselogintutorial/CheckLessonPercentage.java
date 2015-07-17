@@ -19,14 +19,14 @@ public class CheckLessonPercentage extends Activity {
 
     Button button2;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.checklessonpercentage);
+        ParseUser user2 = ParseUser.getCurrentUser();
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Course_hour");
-        query.whereEqualTo("Course", "Pervasive_System");
+        query.whereEqualTo("Course", user2.get("corso").toString());
 
         // Retrieve the object by id
         query.getFirstInBackground(new GetCallback<ParseObject>() {

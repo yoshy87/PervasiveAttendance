@@ -204,6 +204,7 @@ public class PostSignatureProf extends Activity {
                         query.getFirstInBackground(new GetCallback<ParseObject>() {
                             public void done(ParseObject query, ParseException e) {
                                 ParseObject hours = new ParseObject("Hours");
+                                int ore_new = 0;
 
                                 if (query == null) {
                                     String course = prof.get("corso").toString();
@@ -215,11 +216,15 @@ public class PostSignatureProf extends Activity {
                                 }
                                 else {
                                     if(query.get("IMEI").toString().equals(body1)){
-                                        String ore = query.get(course).toString();
-                                        int hour = Integer.parseInt(ore);
-                                        int ore_new = hour + 1;
-                                        query.put(course, ore_new);
-                                        query.saveInBackground();
+                                            try{
+                                                String ore = query.get(course).toString();
+                                                int hour = Integer.parseInt(ore);
+                                                ore_new = hour + 1;
+                                            }catch(NullPointerException ex){
+                                                ore_new =1;
+                                            }
+                                            query.put(course, ore_new);
+                                            query.saveInBackground();
                                     }else{
                                         toast("IMEI UTENTE DIVERSO");
                                     }
