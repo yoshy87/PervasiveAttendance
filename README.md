@@ -75,7 +75,7 @@ First of all you need to install the file .apk
 Then you will see you first screen (like the picture down):
 
 
-	![loginsignup](https://cloud.githubusercontent.com/assets/11192198/8747081/e773983c-2c8f-11e5-825c-0a5ee364e13b.jpg)
+![loginsignup](https://cloud.githubusercontent.com/assets/11192198/8747081/e773983c-2c8f-11e5-825c-0a5ee364e13b.jpg)
 
 In this activity you have the possibility to sign up to the application (if it
 
@@ -83,27 +83,27 @@ is your first time) or make the login. If you are already registered, just
 fill the fields and you can start using the application. On the other hand
 you go in this new screen.
 
-	![signup](https://cloud.githubusercontent.com/assets/11192198/8747187/be4c796e-2c90-11e5-90fa-97be58ad461d.jpg)
+![signup](https://cloud.githubusercontent.com/assets/11192198/8747187/be4c796e-2c90-11e5-90fa-97be58ad461d.jpg)
 
 
 You put some information about you and then you are logged in. So you can start
 using the application.We have two different login: one for the normal user (Student)
 and the other for the professor.
 
-	![corso](https://cloud.githubusercontent.com/assets/11192198/8747193/d558af1a-2c90-11e5-8e86-f5643581231c.jpg)
+![corso](https://cloud.githubusercontent.com/assets/11192198/8747193/d558af1a-2c90-11e5-8e86-f5643581231c.jpg)
 
 First thing is to choose the course you are attending.
 Then the screen became different from the student to the professor.
 
 STUDENT SIDE:
 
-	![welcome studente](https://cloud.githubusercontent.com/assets/11192198/8747203/fb429af6-2c90-11e5-929d-43555e85ce97.jpg)
+![welcome studente](https://cloud.githubusercontent.com/assets/11192198/8747203/fb429af6-2c90-11e5-929d-43555e85ce97.jpg)
 
 When you are here, you can choose to send the signature to your professor to record
 your presence. Rate the lesson you are attending, or check the percentage of
 presence that allow you to make the exam.
 
-	![rating](https://cloud.githubusercontent.com/assets/11192198/8747209/119c9dec-2c91-11e5-89c5-f5b878f204ad.jpg)
+![rating](https://cloud.githubusercontent.com/assets/11192198/8747209/119c9dec-2c91-11e5-89c5-f5b878f204ad.jpg)
 
 
 This is the rating activity when you can rate the listening, the interest and 
@@ -111,27 +111,29 @@ the understanding of the lesson.The information you submit will be sent and will
 be recordered in a anonymous way in order to help the teachers to improve 
 the course.
 
-	![signature student](https://cloud.githubusercontent.com/assets/11192198/8747212/261027f8-2c91-11e5-9ed8-636fc3a81015.jpg)
+![signature student](https://cloud.githubusercontent.com/assets/11192198/8747212/261027f8-2c91-11e5-9ed8-636fc3a81015.jpg)
 
 
 In this case you will be able to send the signature to the professor using only
 the NFC technology (approaching your phone to that of professor)
 
 
-	![check activity](https://cloud.githubusercontent.com/assets/11192198/8747218/37db76c2-2c91-11e5-8a13-1f4dd3e88582.jpg)
+![check activity](https://cloud.githubusercontent.com/assets/11192198/8747218/37db76c2-2c91-11e5-8a13-1f4dd3e88582.jpg)
 
 In this screen you can check how much lesson do you follow, so if you can make the
 exam at the end of the lessons
 
 PROFESSOR SIDE: 
-	![welcome professore](https://cloud.githubusercontent.com/assets/11192198/8747232/519a002e-2c91-11e5-8beb-cf8ee45b55b8.jpg)
+
+
+![welcome professore](https://cloud.githubusercontent.com/assets/11192198/8747232/519a002e-2c91-11e5-8beb-cf8ee45b55b8.jpg)
 
 This is the welcome screen of the professor. In this activity
 the professor can receive the first signature and the 
 second signature of the students at the beginning and at the 
 end of the lesson
 
-	![ricezione signature prof](https://cloud.githubusercontent.com/assets/11192198/8747246/67c242e4-2c91-11e5-8315-076a8f95e5a5.jpg)
+![ricezione signature prof](https://cloud.githubusercontent.com/assets/11192198/8747246/67c242e4-2c91-11e5-8315-076a8f95e5a5.jpg)
 
 
 
