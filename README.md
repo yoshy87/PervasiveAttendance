@@ -32,12 +32,16 @@ I check the test cases. Because clear and
 
 comprehensive test can speak volumes about what the code is used for, along
 
-with all the other great benefits.So for that reason we want to explain our 
-application in three different ways:
+with all the other great benefits.
 
-- a .ppt presentation (more technical)
+CLARIFICATIONS:
+Some clarifications are useful to understand better:
+To develop this application we used just a few things:
+	- Eclipse IDE (with ADT) with android SDK
+	- parse.com libraries to connect the application to parse.com
+	- two mobile phones (lg l7 and sony experia c205) to test our application
+	- a lot of patience and desire to do :)
 
-	#########   link  ##########
 
 - a .jpg picture with the flow of the activities of our application 
 	(for a complete overview of the application)
@@ -53,17 +57,6 @@ flow professor
 professor student
 
 ![professorstudent](https://cloud.githubusercontent.com/assets/11192198/8747319/0579ef3c-2c92-11e5-9676-cdd8c21fec0b.jpg)
-
-- a more easier description with the screen of our project (here below)
-
-CLARIFICATIONS:
-Some clarifications are useful to understand better:
-To develop this application we used just a few things:
-	- Eclipse IDE (with ADT) with android SDK
-	- parse.com libraries to connect the application to parse.com
-	- two mobile phones (lg l7 and sony experia c205) to test our application
-	- a lot of patience and desire to do :)
-
 
 So...let's go!
 
