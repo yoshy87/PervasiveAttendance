@@ -1,8 +1,18 @@
-# PervasiveProject
+# Pervasive Attendance
 
-Our application called "Pervasive attendance" is an application made by three
+Android application called "Pervasive attendance" developed for the project of the 
 
-students of computer engineering at the University of Rome "Sapienza".
+[Pervasive System elective class] (http://ru1.cti.gr/~ichatz/index.php/Site/PervasiveSystems), University of Sapienza, Rome. Spring 2015, http://cclii.dis.uniroma1.it/?q=en/msecs
+
+
+
+[Claudio Di Pilla] (https://www.linkedin.com/profile/view?id=AAIAABRbp4cBr7mJCESzs6vE0AVbhF_VePScp3g&trk=nav_responsive_tab_profile)
+
+[Maurizio Tesori] (https://www.linkedin.com/profile/view?id=ADEAAA2E3MoB2nyx9SVcZjYuLF3KdpjTG0N-LmM&authType=NAME_SEARCH&authToken=NjzT&locale=it_IT&srchid=3415509831443193160785&srchindex=1&srchtotal=1&trk=vsrp_people_res_name&trkInfo=VSRPsearchId%3A3415509831443193160785%2CVSRPtargetId%3A226811082%2CVSRPcmpt%3Aprimary%2CVSRPnm%3Atrue%2CauthType%3ANAME_SEARCH)
+
+Claudio Arcese
+
+#General description
 
 Along our university career can happen that some courses are mandatory, perhaps
 
@@ -16,32 +26,18 @@ but also give your opinion (with the rating) about the lesson you are
 
 attending or about the topic of the lesson. All in one!
 
-Every time we are intrigued by a new thing(a new application or just a new 
+All these informations are sent to Parse database (http://www.parse.com).
 
-object that attracts our attention),some people don't want to have to read a technical 
 
-document to understand the application (sometimes we do not have the knowledge
- 
-to understand everything quickly). The most important piece of documentation
+#CLARIFICATIONS:
+To understand better all the project is important to specify the material used to develop this application :
 
-for a project is the unit tests, or in more general way see how it works; 
-
-whenever I come across some code I don't understand the importance of, 
-
-I check the test cases. Because clear and 
-
-comprehensive test can speak volumes about what the code is used for, along
-
-with all the other great benefits.
-
-CLARIFICATIONS:
-Some clarifications are useful to understand better:
-To develop this application we used just a few things:
-	- Eclipse IDE (with ADT) with android SDK
+	- Eclipse IDE (with ADT) with android SDK 
 	- parse.com libraries to connect the application to parse.com
 	- two mobile phones (lg l7 and sony experia c205) to test our application
 	- a lot of patience and desire to do :)
 
+#Graphics architecture
 
 - a .jpg picture with the flow of the activities of our application 
 	(for a complete overview of the application)
@@ -58,10 +54,9 @@ professor student
 
 ![professorstudent](https://cloud.githubusercontent.com/assets/11192198/8747319/0579ef3c-2c92-11e5-9676-cdd8c21fec0b.jpg)
 
-So...let's go!
 
 
-How it works?
+#How it works?
 
 First of all you need to install the file .apk
 
