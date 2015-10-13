@@ -43,7 +43,15 @@ public class CheckLessonPercentage extends Activity {
 
                             String ore2 = query2.get(course).toString();
                             double hour2 = Double.parseDouble(ore2);
+                            if(hour2 == 0){
+                                Toast.makeText(
+                                        getApplicationContext(),
+                                        "You cannot do the exam: 0% lesson attend",
+                                        Toast.LENGTH_LONG).show();
+                            }
+
                             final double percentage = hour2/hour;
+
 
                             String no_exam = "You cannot do the exam: " + (percentage*100) +"% lesson attend";
                             String yes_exam = "You can do the exam: " + (percentage*100) +"% lesson attend";

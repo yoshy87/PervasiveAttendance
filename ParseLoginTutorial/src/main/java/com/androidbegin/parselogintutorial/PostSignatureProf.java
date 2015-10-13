@@ -343,6 +343,7 @@ public class PostSignatureProf extends Activity {
         return false;
     }
 
+    
     private void toast(String text) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
