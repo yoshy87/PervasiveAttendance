@@ -41,32 +41,34 @@ public class CheckLessonPercentage extends Activity {
 
                     public void done(ParseObject query2, ParseException e) {
 
-                            String ore2 = query2.get(course).toString();
-                            double hour2 = Double.parseDouble(ore2);
-                            if(hour2 == 0){
-                                Toast.makeText(
-                                        getApplicationContext(),
-                                        "You cannot do the exam: 0% lesson attend",
-                                        Toast.LENGTH_LONG).show();
-                            }
+                        String ore2 = query2.get(course).toString();
+                        double hour2 = Double.parseDouble(ore2);
+                        if (hour2 == 0) {
+                            Toast.makeText(
+                                    getApplicationContext(),
+                                    "You cannot do the exam: 0% lesson attend",
+                                    Toast.LENGTH_LONG).show();
+                        } else {
 
-                            final double percentage = hour2/hour;
+                            final double percentage = hour2 / hour;
 
 
-                            String no_exam = "You cannot do the exam: " + (percentage*100) +"% lesson attend";
-                            String yes_exam = "You can do the exam: " + (percentage*100) +"% lesson attend";
+                            String no_exam = "You cannot do the exam: " + (percentage * 100) + "% lesson attend";
+                            String yes_exam = "You can do the exam: " + (percentage * 100) + "% lesson attend";
                             if (percentage < 0.75) {
                                 Toast.makeText(
-                                    getApplicationContext(),
-                                    no_exam,
-                                    Toast.LENGTH_LONG).show();
-                            }else
+                                        getApplicationContext(),
+                                        no_exam,
+                                        Toast.LENGTH_LONG).show();
+                            } else {
                                 Toast.makeText(
-                                    getApplicationContext(),
-                                    yes_exam,
-                                    Toast.LENGTH_LONG).show();
+                                        getApplicationContext(),
+                                        yes_exam,
+                                        Toast.LENGTH_LONG).show();
+                            }
                         }
-                    });
+                    }
+                });
             }
         });
 
