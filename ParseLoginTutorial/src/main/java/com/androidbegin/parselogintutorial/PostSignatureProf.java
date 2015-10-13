@@ -18,19 +18,15 @@ import android.os.Parcelable;
 import android.text.Editable;
 import android.widget.Button;
 import android.widget.TextView;
-import android.content.Context;
-import android.telephony.TelephonyManager;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
-
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.ParseQuery;
 import com.parse.GetCallback;
-
 import java.io.IOException;
 
 public class PostSignatureProf extends Activity {
@@ -42,19 +38,15 @@ public class PostSignatureProf extends Activity {
     TextView mNote;
     TextView mNote2;
     Button button2;
-    String matricola = user.get("username").toString();
 
     String course = user.get("corso").toString();
 
-    //Object to store on Sign_out table
     ParseObject signout = new ParseObject("Sign_out");
-
 
     PendingIntent mNfcPendingIntent;
     IntentFilter[] mWriteTagFilters;
     IntentFilter[] mNdefExchangeFilters;
 
-    /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +55,6 @@ public class PostSignatureProf extends Activity {
         setContentView(R.layout.postsignatureprof);
 
         mNote = ((TextView) findViewById(R.id.username));
-        // toast(matricola);
         mNote.addTextChangedListener(mTextWatcher);
 
         button2 = (Button) findViewById(R.id.button2);
@@ -80,8 +71,6 @@ public class PostSignatureProf extends Activity {
 
 
         mNote2 = (TextView)findViewById(R.id.imei);
-        TelephonyManager telephonyManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
-        // mNote2.setText(getDeviceID(telephonyManager));
         mNote2.addTextChangedListener(mTextWatcher);
 
         // Handle all of our received NFC intents in this activity.
@@ -100,24 +89,15 @@ public class PostSignatureProf extends Activity {
         mWriteTagFilters = new IntentFilter[] { tagDetected };
     }
 
-    String getDeviceID(TelephonyManager phonyManager){
-        String id = phonyManager.getDeviceId();
-        if(id == null){
-            id = "non disponibile";
-        }
-        return id;
-    }
-
     @Override
     protected void onResume() {
         super.onResume();
         mResumed = true;
-        //received from Android
         if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction())) {
             NdefMessage[] messages = getNdefMessages(getIntent());
             byte[] payload = messages[0].getRecords()[0].getPayload();
             setNoteBody(new String(payload));
-            setIntent(new Intent()); // Consume this intent.
+            setIntent(new Intent());
         }
         enableNdefExchangeMode();
     }
@@ -131,13 +111,11 @@ public class PostSignatureProf extends Activity {
 
     @Override
     protected void onNewIntent(Intent intent) {
-        // NDEF exchange mode
         if (!mWriteMode && NfcAdapter.ACTION_NDEF_DISCOVERED.equals(intent.getAction())) {
             NdefMessage[] msgs = getNdefMessages(intent);
             promptForContent(msgs[0]);
         }
 
-        // Tag writing mode
         if (mWriteMode && NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())) {
             Tag detectedTag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
             writeTag(getNoteAsNdef(), detectedTag);
@@ -148,12 +126,10 @@ public class PostSignatureProf extends Activity {
 
         @Override
         public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-
         }
 
         @Override
         public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-
         }
 
         @Override
@@ -235,7 +211,7 @@ public class PostSignatureProf extends Activity {
                         signout.put("Matricola", body);
                         signout.put("IMEI", body1);
                         signout.put("Course" , course);
-                        //signout.put("Lecture", 1);
+                        signout.put("Lecture", 1);
                         signout.saveInBackground();
                     }
                 })
@@ -270,7 +246,6 @@ public class PostSignatureProf extends Activity {
     }
 
     NdefMessage[] getNdefMessages(Intent intent) {
-        // Parse the intent
         NdefMessage[] msgs = null;
         String action = intent.getAction();
         if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(action)

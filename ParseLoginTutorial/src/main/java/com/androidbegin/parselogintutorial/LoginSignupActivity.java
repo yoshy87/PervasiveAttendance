@@ -8,25 +8,19 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.parse.LogInCallback;
 import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseRole;
 import com.parse.ParseUser;
-//import com.parse.SignUpCallback;
 
 public class LoginSignupActivity extends Activity {
     // Declare Variables
     Button loginbutton;
     Button signup;
     Button signaturebutton;
-    Button rating;
     String usernametxt;
     String passwordtxt;
     EditText password;
     EditText username;
-    //EditText imei;
 
     /** Called when the activity is first created. */
     public void onCreate(Bundle savedInstanceState) {

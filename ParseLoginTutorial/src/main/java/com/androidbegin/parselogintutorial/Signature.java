@@ -24,19 +24,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.parse.ParseUser;
-
 import android.view.View.OnClickListener;
-import android.content.Context;
-import android.widget.EditText;
-
-import com.parse.LogInCallback;
-import com.parse.ParseException;
-
-
-import com.parse.ParseObject;
-
 import java.io.IOException;
 
 public class Signature extends Activity {
@@ -48,14 +37,7 @@ public class Signature extends Activity {
     TextView mNote;
     TextView mNote2;
     String matricola = user.get("username").toString();
-
-
-
     Button button2;
-    String course = user.get("corso").toString();
-
-
-    ParseObject signout = new ParseObject("Sign_out");
 
     PendingIntent mNfcPendingIntent;
     IntentFilter[] mWriteTagFilters;
@@ -120,7 +102,7 @@ public class Signature extends Activity {
     protected void onResume() {
         super.onResume();
         mResumed = true;
-        // Sticky notes received from Android
+        // received from Android
         if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction())) {
             NdefMessage[] messages = getNdefMessages(getIntent());
             byte[] payload = messages[0].getRecords()[0].getPayload();

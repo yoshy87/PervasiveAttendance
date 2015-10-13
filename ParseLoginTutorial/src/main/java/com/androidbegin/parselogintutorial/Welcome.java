@@ -1,11 +1,6 @@
 package com.androidbegin.parselogintutorial;
 
-//import java.io.PrintWriter;
-//import java.io.StringWriter;
-//import java.io.Writer;
-
 import com.parse.ParseUser;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +8,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-//import android.widget.Toast;
 
 public class Welcome extends Activity {
 

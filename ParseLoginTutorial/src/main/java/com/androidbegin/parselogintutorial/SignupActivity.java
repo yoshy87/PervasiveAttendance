@@ -3,7 +3,6 @@ package com.androidbegin.parselogintutorial;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -21,9 +20,6 @@ import com.parse.SignUpCallback;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-//Cryptography for IMEI
-//import com.parse.ParseACL;
-//import com.parse.ParseObject;
 
 public class SignupActivity extends Activity {
 

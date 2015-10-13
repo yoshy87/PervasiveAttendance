@@ -3,10 +3,6 @@ package com.androidbegin.parselogintutorial;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-
 import com.parse.ParseUser;
 
 public class ControlUser extends Activity {
